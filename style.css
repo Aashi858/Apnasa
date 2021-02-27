@@ -1,0 +1,36 @@
+body{
+    text-align: center;
+    margin-top: 50px;
+    font-size: 15px;
+    background-color: linear-gradient(yellow,lawngreen);
+    font-family: 'Times New Roman';
+}
+div{
+    background-color: cornsilk;
+    width: 500px;
+    margin-left: 250px;
+    border-radius: 10px;
+    padding: 20px;
+}
+button{
+    width: 50%;
+    height: 6%;
+    border-radius: 10px;
+    border-color: dodgerblue;
+    background-color: darkturquoise;
+}
+
+#ask{
+    display: inline-block;
+    margin-right: 40px;
+}
+#output{
+    width: 500px;
+    margin-left: 250px;
+    border-radius: 10px;
+    padding: 20px;
+    text-align: left;
+}
+#glyphicon{
+    font-size: x-large;
+}
