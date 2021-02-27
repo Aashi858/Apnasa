@@ -36,10 +36,10 @@ function showData(){
     Phone_Number : phone_number,
     Address_of_Factory : address_of_Factory
 });
-  name_tag = "<div><h3 class='glyphicon glyphicon-certificate'>"+username+"</h3><br>";
+  name_tag = "<h3 class='glyphicon glyphicon-certificate'>"+username+"</h3><br>";
   factory_name_tag = "<label>Name of Factory/Campany : "+factory_Name+"</label><br>";
   phone_tag = "<label>Phone Number : "+phone_number+"</label><br>";
-  factory_address_tag = "<label>Address of Factory/Campany : "+address_of_Factory+"</label></div>";
+  factory_address_tag = "<label>Address of Factory/Campany : "+address_of_Factory+"</label>";
    
   column = name_tag + factory_name_tag + phone_tag + factory_address_tag;
   document.getElementById("output").innerHTML += column;
