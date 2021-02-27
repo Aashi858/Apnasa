@@ -8,7 +8,7 @@ body{
 div{
     background-color: cornsilk;
     width: 500px;
-    margin-left: 250px;
+    margin-left: 300px;
     border-radius: 10px;
     padding: 20px;
 }
@@ -30,7 +30,7 @@ button{
 #output{
     background-color: cornsilk;
     width: 500px;
-    margin-left: 250px;
+    margin-left: 300px;
     border-radius: 10px;
     padding: 20px;
 }
