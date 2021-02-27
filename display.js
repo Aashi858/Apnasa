@@ -13,21 +13,36 @@ var firebaseConfig = {
 // Initialize Firebase
 firebase.initializeApp(firebaseConfig);
 
-username = localStorage.getItem("Username");
-function getData(){
-    firebase.database().ref("/"+username).on('value', function(snapshot) { document.getElementById("output").innerHTML = ""; snapshot.forEach(function(childSnapshot) { childKey  = childSnapshot.key; childData = childSnapshot.val(); if(childKey != "Username") {
-    firebase_message_id = childKey;
-    message_data = childData;
-} });  });
-}
-function showData(){
-  getData();
-   login_Id = localStorage.getItem("User Login-id");
+    username = localStorage.getItem("Username");
+    login_Id = localStorage.getItem("User Login-id");
     password = localStorage.getItem("User Password");
     factory_Name = localStorage.getItem("Factory_Name");
     phone_number = localStorage.getItem("Phone_Number");
     address_of_Factory = localStorage.getItem("Address_Factory");
 
+function getData(){
+    firebase.database().ref("/"+username).on('value', function(snapshot) { document.getElementById("output").innerHTML = ""; snapshot.forEach(function(childSnapshot) { childKey  = childSnapshot.key; childData = childSnapshot.val(); if(childKey != "Username") {
+    firebase_message_id = childKey;
+    message_data = childData;
+
+    console.log(firebase_message_id);
+    console.log(message_data);
+    name_data = message_data['Name'];
+    factory_name_data = message_data['Name_of_Factory'];
+    phone_data = message_data['Phone_Number'];
+    factory_address_data = message_data['Address_of_Factory'];
+
+    name_tag = "<br><h3 class='glyphicon glyphicon-certificate'>"+name_data+"</h3><br>";
+    factory_name_tag = "<label>Name of Factory/Campany : "+factory_name_data+"</label><br>";
+    phone_tag = "<label>Phone Number : "+phone_data+"</label><br>";
+    factory_address_tag = "<label>Address of Factory/Campany : "+factory_name_data+"</label><hr>";
+   
+    column = name_tag + factory_name_tag + phone_tag + factory_address_tag;
+    document.getElementById("output").innerHTML += column ;
+} });  });
+}
+getData();
+function showData(){
   firebase.database().ref(username).push({
     Name : username,
     Login_Id : login_Id,
@@ -36,12 +51,4 @@ function showData(){
     Phone_Number : phone_number,
     Address_of_Factory : address_of_Factory
 });
-  name_tag = "<h3 class='glyphicon glyphicon-certificate'>"+username+"</h3><br>";
-  factory_name_tag = "<label>Name of Factory/Campany : "+factory_Name+"</label><br>";
-  phone_tag = "<label>Phone Number : "+phone_number+"</label><br>";
-  factory_address_tag = "<label>Address of Factory/Campany : "+address_of_Factory+"</label>";
-   
-  column = name_tag + factory_name_tag + phone_tag + factory_address_tag;
-  document.getElementById("output").innerHTML += column;
 }
-showData();
