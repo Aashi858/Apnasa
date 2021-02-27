@@ -12,7 +12,8 @@ var firebaseConfig = {
 };
 // Initialize Firebase
 firebase.initializeApp(firebaseConfig);
-
+    
+    answer = localStorage.getItem("Wants Job");
     username = localStorage.getItem("Username");
     login_Id = localStorage.getItem("User Login-id");
     password = localStorage.getItem("User Password");
@@ -32,23 +33,28 @@ function getData(){
     phone_data = message_data['Phone_Number'];
     factory_address_data = message_data['Address_of_Factory'];
 
-    name_tag = "<br><h3 class='glyphicon glyphicon-certificate'>"+name_data+"</h3><br>";
-    factory_name_tag = "<label>Name of Factory/Campany : "+factory_name_data+"</label><br>";
-    phone_tag = "<label>Phone Number : "+phone_data+"</label><br>";
-    factory_address_tag = "<label>Address of Factory/Campany : "+factory_name_data+"</label><hr>";
+    name_tag = "<br> <h3 class='glyphicon glyphicon-certificate'>"+ name_data +"</h3> <br>";
+    factory_name_tag = "<label> Name of Factory/Campany : "+ factory_name_data +"</label> <br>";
+    phone_tag = "<label> Phone Number : "+ phone_data +"</label> <br>";
+    factory_address_tag = "<label> Address of Factory/Campany : "+ factory_name_data +"</label> <hr>";
    
     column = name_tag + factory_name_tag + phone_tag + factory_address_tag;
-    document.getElementById("output").innerHTML += column ;
+    document.getElementById("output").innerHTML += column;
 } });  });
 }
 getData();
 function showData(){
-  firebase.database().ref(username).push({
-    Name : username,
-    Login_Id : login_Id,
-    Password : password,
-    Name_of_Factory : factory_Name,
-    Phone_Number : phone_number,
-    Address_of_Factory : address_of_Factory
+    if(answer == "No"){
+      firebase.database().ref(username).push({
+       Name : username,
+       Login_Id : login_Id,
+       Password : password,
+       Name_of_Factory : factory_Name,
+       Phone_Number : phone_number,
+       Address_of_Factory : address_of_Factory
 });
+}
+  if(answer == "Yes"){
+    getData();
+  }
 }
